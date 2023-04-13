@@ -72,10 +72,10 @@ class _BodyState extends State<Body> {
             children: [
               SpecialContainer(
                 onTap: () {
-                  Navigator.pushNamed(context, '/notification');
+                  Navigator.pushNamed(context, '/error');
                 },
                 image: Image.asset(
-                  'assets/images/communityLogo.png',
+                  'assets/icons/communityLogo.png',
                   width: 120,
                 ),
                 title: 'Apple Developer Student Community!',

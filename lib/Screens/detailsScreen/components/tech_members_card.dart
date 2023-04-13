@@ -11,6 +11,7 @@ class TechMembersCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Column(
           children: [
@@ -19,8 +20,8 @@ class TechMembersCard extends StatelessWidget {
               image: Image.asset('assets/images/abhay.png'),
               title: 'Abhay Aggarwal',
               desc: 'Chief Front-End',
-              instaAccount: () {},
-              linkedinAccount: () {},
+              instaAccount: Uri.parse('https://www.instagram.com/high_abhay/'),
+              linkedinAccount: Uri.parse('https://www.linkedin.com/in/abhay-ag/'),
             ),
           ],
         ),
@@ -31,8 +32,8 @@ class TechMembersCard extends StatelessWidget {
               image: Image.asset('assets/images/Ishan_singla.jpeg'),
               title: 'Ishan Singla',
               desc: 'Chief Back-End',
-              instaAccount: () {},
-              linkedinAccount: () {},
+              instaAccount: Uri.parse('https://www.instagram.com/is_ishan_singla/'),
+              linkedinAccount: Uri.parse('https://www.linkedin.com/in/isishansingla/'),
             ),
           ],
         ),

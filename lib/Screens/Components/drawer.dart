@@ -1,30 +1,56 @@
+import 'package:apple_student_community/authentication.dart';
+import 'package:apple_student_community/util/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/widgets.dart';
 
+class MyDrawer extends StatefulWidget {
+  MyDrawer({
+    Key? key,
+  }) : super(key: key);
 
-class MyDrawer extends StatelessWidget {
-  const MyDrawer(
-      {Key? key,
-        required this.name,
-        required this.email,
-        required this.press,
-        required this.profilePicture})
-      : super(key: key);
+  @override
+  State<MyDrawer> createState() => _MyDrawerState();
+}
 
-  final String name, email;
-  final VoidCallback press;
-  final GoogleUserCircleAvatar profilePicture;
+class _MyDrawerState extends State<MyDrawer> {
+  String name = "", email = "", profileURL = "";
+  User? user;
+
+  @override
+  void initState() {
+    super.initState();
+    User? newUser = FirebaseAuth.instance.currentUser;
+    setState(() {
+      user = newUser;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    final user = this.user;
+    if (user != null) {
+      name = user.displayName!;
+      email = user.email!;
+      profileURL = user.photoURL!;
+    }
+    Color color = Colors.white;
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.white38,
+              // gradient: kDrawerGradientBg,
+            ),
             accountName: Text(name),
             accountEmail: Text(email),
-            currentAccountPicture: profilePicture,
+            currentAccountPicture: CircleAvatar(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(50),
+                child: Image.network(profileURL),
+              ),
+            ),
           ),
           const ListTile(
             leading: Icon(Icons.person),
@@ -46,9 +72,14 @@ class MyDrawer extends StatelessWidget {
             leading: Icon(Icons.send),
             title: Text("Share"),
           ),
-          ListTile(
-            leading: const Icon(Icons.settings),
-            title: GestureDetector(onTap: press, child: const Text("Sign out")),
+          GestureDetector(
+            onTap: (){
+              signOut(context);
+            },
+            child: ListTile(
+              leading: const Icon(Icons.settings),
+              title: Text("Sign out", style: TextStyle(color: color)),
+            ),
           ),
         ],
       ),

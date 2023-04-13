@@ -40,9 +40,17 @@ class OrganisingHead extends StatelessWidget {
                       style: GoogleFonts.laila(color: Colors.grey),
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        SocialMediaIcon(icon: FontAwesomeIcons.linkedinIn, onTap: () {  },),
-                        SocialMediaIcon(icon: FontAwesomeIcons.instagram, onTap: (){},)
+                        SocialMediaIcon(
+                          icon: FontAwesomeIcons.linkedinIn,
+                          url: Uri.parse('https://www.linkedin.com/in/siddharth-garg-4b6912227/'),
+                        ),
+                        SizedBox(width: 10),
+                        SocialMediaIcon(
+                          icon: FontAwesomeIcons.instagram,
+                          url: Uri.parse('https://www.instagram.com/siddh_61103/'),
+                        )
                       ],
                     )
                   ],
@@ -71,17 +79,21 @@ class OrganisingHead extends StatelessWidget {
                 ),
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 25.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 18.0, vertical: 25.0),
                     child: Text(
-                        "Hi Students!\nA lot of time people think being in Organising Team means",
+                      "Hi Students!\nA lot of time people think being in Organising Team means",
                       style: GoogleFonts.laila(fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
               ],
             ),
-            Text(" just organising Events but in this community Organising team members will also learn how Human Resources Works!"
-                "\n\nThank You So much For Hearing Us!",style: GoogleFonts.laila(fontWeight: FontWeight.bold),),
+            Text(
+              " just organising Events but in this community Organising team members will also learn how Human Resources Works!"
+              "\n\nThank You So much For Hearing Us!",
+              style: GoogleFonts.laila(fontWeight: FontWeight.bold),
+            ),
           ],
         ),
       ),
